@@ -11,13 +11,13 @@ public class Form {         // application form
     int id;
 
     @Column(name="application_key")
-    String formName;
+    String name;
 
     public int getId(){return this.id;}
     public void setId(int i) {this.id = i;}
 
-    public String getName(){return this.formName;}
-    public void setName(String n) {this.formName = n;}
+    public String getName(){return this.name;}
+    public void setName(String n) {this.name = n;}
 
     public Form(){}
 
@@ -25,13 +25,11 @@ public class Form {         // application form
 
     public Form(String name){
         this.setName(name);
-       // this.setCodeTableList(list);
     }
 
     public Form(int id, String name){
         this.setId(id);
         this.setName(name);
-        //this.setCodeTableList(list);
     }
 
 

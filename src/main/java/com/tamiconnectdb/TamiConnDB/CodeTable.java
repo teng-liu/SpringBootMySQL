@@ -8,7 +8,6 @@ import java.util.List;
 public class CodeTable {
     @Id
     @Column(name = "id_codetable")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
     @Column(name = "codetable_key")
