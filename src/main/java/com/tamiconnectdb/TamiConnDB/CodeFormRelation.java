@@ -1,10 +1,14 @@
 package com.tamiconnectdb.TamiConnDB;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+
+//@NamedQueries({
+//        @NamedQuery(
+//                name = "findCodeTablesByFormID",
+//                query = "from CodeFormRelation cfr where c.id = :id"
+//        ),
+//})
 @Entity
 @Table(name = "application_codetable")
 public class CodeFormRelation {

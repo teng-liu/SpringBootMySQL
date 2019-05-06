@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.PrivateKey;
+import java.sql.Statement;
 import java.util.List;
 
 @RestController
@@ -21,6 +23,28 @@ public class FormController {
 
     @Autowired
     CodeValueRepos codeValueRepos;
+
+    @Autowired
+    IApplicationService appService;
+
+    @GetMapping("/jdbc-applications")
+    public ResponseEntity<List<Application>> getAllApplication(){
+        List<Application> apps = appService.getAllApplication();
+        return new ResponseEntity<List<Application>>(apps,HttpStatus.OK);
+    }
+
+    @GetMapping("/jdbc-application/{id}")
+    public ResponseEntity<Application> getApplicationByID(@PathVariable("id") int id){
+        Application app = appService.getApplicationByID(id);
+        return new ResponseEntity<Application>(app,HttpStatus.OK);
+    }
+
+    @GetMapping("/jdbc-codevalue/{id}")
+    public ResponseEntity<List<CodeValue1>> getCodeValueByFormID(@PathVariable("id") int id){
+        List<CodeValue1> cv = appService.getCodeValueByCodeID(id);
+        return new ResponseEntity<List<CodeValue1>>(cv,HttpStatus.OK);
+    }
+
 
     @GetMapping("/form")
     public List<Form> listForms(){
@@ -88,6 +112,10 @@ public class FormController {
             codeValueRepos.save(cv);
         }
         return new ResponseEntity<CodeValue>(cv, HttpStatus.OK);
+    }
+
+    public void tamiQuery(){
+        //Statement stmt =
     }
 
 }

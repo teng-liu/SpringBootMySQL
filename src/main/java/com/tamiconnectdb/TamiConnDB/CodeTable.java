@@ -5,6 +5,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "codetable")
+
+// select * from codetable c where c.
 public class CodeTable {
     @Id
     @Column(name = "id_codetable")
