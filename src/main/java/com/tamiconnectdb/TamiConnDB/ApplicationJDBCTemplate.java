@@ -51,24 +51,38 @@ public class ApplicationJDBCTemplate implements ApplicationDAO {
         return apps;
     }
 
-    public List<CodeValue1> getCodeValueByCodeID(int appId) {
-
-        String sql = "select  a.id_application, a.application_key, ct.codetable_key, cv.code_value\n" +
-                "    from codevalue cv\n" +
-                "    inner join codetable ct on cv.id_codetable=ct.id_codetable\n" +
-                "    inner join application_codetable m on ct.id_codetable=m.id_codetable\n" +
-                "    inner join application a on m.id_application=a.id_application\n" +
-                "    where a.id_application=?;";
+    public List<CodeValue1> getCodeValueByCodeID(int ctid) {
+        String query = "select ct.id_codetable, ct.codetable_key, cv.id_codevalue, cv.code_value\n" +
+                "    from codetable ct\n" +
+                "    inner join codevalue cv on ct.id_codetable=cv.id_codetable\n" +
+                "    where ct.id_codetable=?;";
 
         RowMapper<CodeValue1> mapper = new CodeValueMapper();
         List<CodeValue1> codeValues = jdbcTemplate.query(
-                sql, new PreparedStatementSetter() {
+                query, new PreparedStatementSetter() {
+                    public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                        preparedStatement.setInt(1, ctid);
+                    }
+                },
+                mapper);
+
+        return codeValues;
+    }
+
+    public List<CodeTableFormRel> getCodeListByFormId(int appId){
+        String query = "select m.id_application_codetable, m.id_application, m.id_codetable, ct.codetable_key\n" +
+                "    from application_codetable m \n" +
+                "    inner join codetable ct on m.id_codetable=ct.id_codetable\n" +
+                "    where m.id_application = ?;";
+        RowMapper<CodeTableFormRel> mapper = new CodeTableFormRelMapper();
+        List<CodeTableFormRel> list = jdbcTemplate.query(
+                query, new PreparedStatementSetter() {
                     public void setValues(PreparedStatement preparedStatement) throws SQLException {
                         preparedStatement.setInt(1, appId);
                     }
                 },
                 mapper);
 
-        return codeValues;
+        return list;
     }
 }

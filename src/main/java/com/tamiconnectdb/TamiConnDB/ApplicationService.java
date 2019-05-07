@@ -21,6 +21,13 @@ public class ApplicationService implements IApplicationService {
     }
 
     public List<CodeValue1> getCodeValueByCodeID(int appId){
-        return appDAO.getCodeValueByCodeID(appId);
+        List<CodeValue1> list = appDAO.getCodeValueByCodeID(appId);
+        return list;
     }
+
+    public List<CodeTableFormRel> getCodeListByFormId(int appId) {
+        List<CodeTableFormRel> list = appDAO.getCodeListByFormId(appId);
+        return list;
+    }
+
 }

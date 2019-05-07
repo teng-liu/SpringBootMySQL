@@ -2,30 +2,59 @@ package com.tamiconnectdb.TamiConnDB;
 
 public class CodeValue1 {
 
-    int id, codetableId;
-    String value;
+//    select ct.id_codetable, ct.codetable_key, cv.id_codevalue, cv.code_value
+//    from codetable ct
+//    inner join codevalue cv on ct.id_codetable=cv.id_codetable
+//    where ct.id_codetable=1;
 
-    public int getId() {return id; }
-    public void setId(int id) {this.id = id; }
+    int codeValueId;
+    int codeTableId;
+    String codeTableName;
+    String codeValue;
 
-    public String getValue() {return value; }
-    public void setValue(String value) {this.value = value; }
-
-    public int getCodetableId() {return codetableId; }
-    public void setCodetableId(int codetableId) {this.codetableId = codetableId; }
-
-
-    public CodeValue1(){}
-    public CodeValue1(int codeValueID){
-        this.setId(codeValueID);
+    public void setCodeValueId(int codeValueId) {
+        this.codeValueId = codeValueId;
     }
-    public CodeValue1(int codeValueID, String codeValueName){
-        this.setId(codeValueID);
-        this.setValue(codeValueName);
+
+    public void setCodeTableId(int codeTableId) {
+        this.codeTableId = codeTableId;
     }
-    public CodeValue1(int codeValueID, String codeValueName, int codeID){
-        this.setId(codeValueID);
-        this.setValue(codeValueName);
-        this.setCodetableId(codeID);
+
+    public void setCodeTableName(String codeTableName) {
+        this.codeTableName = codeTableName;
+    }
+
+    public void setCodeValue(String codeValue) {
+        this.codeValue = codeValue;
+    }
+
+    public int getCodeValueId() {
+        return codeValueId;
+    }
+
+    public int getCodeTableId() {
+        return codeTableId;
+    }
+
+    public String getCodeTableName() {
+        return codeTableName;
+    }
+
+    public String getCodeValue() {
+        return codeValue;
+    }
+
+    public CodeValue1(){ }
+
+    public CodeValue1(int codeValueId,
+                      int codeTableId,
+                      String codeTableName,
+                      String codeValue){
+
+        this.setCodeValueId(codeValueId);
+        this.setCodeTableId(codeTableId);
+        this.setCodeTableName(codeTableName);
+        this.setCodeValue(codeValue);
+
     }
 }

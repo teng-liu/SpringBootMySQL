@@ -8,8 +8,9 @@ import java.util.List;
 public interface ApplicationDAO {
     //Data Access Object interface
 
-    public void setDataSource(DataSource ds, JdbcTemplate template);
-    public List<Application> getAllApplications();
+    void setDataSource(DataSource ds, JdbcTemplate template);
+    List<Application> getAllApplications();
     Application getApplicationByID(int id);
-    public List<CodeValue1> getCodeValueByCodeID(int codeTableId);
+    List<CodeValue1> getCodeValueByCodeID(int codeTableId);
+    List<CodeTableFormRel> getCodeListByFormId(int appId);
 }

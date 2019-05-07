@@ -2,26 +2,19 @@ package com.tamiconnectdb.TamiConnDB;
 
 import javax.persistence.*;
 
-
-//@NamedQueries({
-//        @NamedQuery(
-//                name = "findCodeTablesByFormID",
-//                query = "from CodeFormRelation cfr where c.id = :id"
-//        ),
-//})
 @Entity
 @Table(name = "application_codetable")
 public class CodeFormRelation {
 
     @Id
-    @Column(name = "id_application_codetable ")
+    @Column(name = "id_application_codetable")
     int id;
 
-    @Column(name = "id_application ")
+    @Column(name = "id_application")
     int formID;
 
-    @Column(name = "id_codetable ")
-    int codeId;
+    @Column(name = "id_codetable")
+    int codeID;
 
     public void setId(int id) {this.id = id;}
     public int getId() {return id;}
@@ -29,8 +22,8 @@ public class CodeFormRelation {
     public void setFormID(int formID) {this.formID = formID;}
     public int getFormID() {return formID;}
 
-    public void setCodeId(int codeId) {this.codeId = codeId;}
-    public int getCodeId() {return codeId;}
+    public void setCodeId(int codeID) {this.codeID = codeID;}
+    public int getCodeId() {return this.codeID;}
 
     public CodeFormRelation() {}
 
@@ -43,10 +36,10 @@ public class CodeFormRelation {
         this.setFormID(formID);
     }
 
-    public CodeFormRelation(int id, int formID, int codeId) {
+    public CodeFormRelation(int id, int formID, int codeID) {
         this.setId(id);
         this.setFormID(formID);
-        this.setCodeId(codeId);
+        this.setCodeId(codeID);
     }
 
 }
